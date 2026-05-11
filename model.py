@@ -184,7 +184,7 @@ class GPASS(nn.Module):
         if not hasattr(self, '_adaptive_loss'):
             self._adaptive_loss = GradientAwareLoss(n_tasks=len(loss_components))
         # Pass encoder embedding params as shared reference for gradient cosine
-        shared = list(self.emb.parameters()) + list(self.layers.parameters())
+        shared = [self.emb] + list(self.layers.parameters())
         total_loss = self._adaptive_loss(loss_components, shared_params=iter(shared))
         return total_loss
 
