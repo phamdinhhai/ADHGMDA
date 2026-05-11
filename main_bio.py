@@ -46,11 +46,11 @@ if __name__ == '__main__':
         datapath = Data_paths(f'./data/{data_names[data_id]}/')
         device = torch.device(f'cuda:0' if torch.cuda.is_available() else 'cpu')
         biodata = BioData(datapath.md,
-                          mss_list=datapath.mm,
-                          dss_list=datapath.dd,
-                          device=device,
-                          data_name=data_names[data_id],
-                          sep=r'[\t ]')
+                  mss_list=datapath.mm,
+                  dss_list=datapath.dd,
+                  device=device,
+                  data_name=data_names[data_id],
+                  sep=',')
         params_init = biodata.config
         params_init.epochs = 1000
         params_init.repeat = 10
